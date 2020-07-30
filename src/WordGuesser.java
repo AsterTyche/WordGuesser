@@ -21,10 +21,11 @@ public class WordGuesser {
             for (String letter : requireNonNull(word).split(""))
                 if (!(rguessedletters.contains(letter))) ask = format("%s_", ask);
                 else ask = format("%s%s", ask, letter);
-            String wrong = "";
-            for (String w : wguessedletters) wrong = format("%s%s, ", wrong, w);
-            if (wrong.length()>0) wrong = wrong.substring(0, wrong.length()-2);
-            out.printf("%s\nYou have guessed these letter(s):\n%s\nYou have %s more chance(s).\nGuess a letter:%n", ask, wrong, 10 - wguessedletters.size());
+            String guessedletters = "";
+            for (String w : wguessedletters) guessedletters = format("%s%s, ", guessedletters, w);
+            for (String r : rguessedletters) guessedletters = format("%s%s, ", guessedletters, r);
+            if (guessedletters.length()>0) guessedletters = guessedletters.substring(0, guessedletters.length()-2);
+            out.printf("%s\nYou have guessed these letter(s):\n%s\nYou have %s more chance(s).\nGuess a letter:%n", ask, guessedletters, 10 - wguessedletters.size());
             String guess = ascanner.next();
             if (guess.length()!=1){
                 out.println(guess+" isn't a letter.\n");
