@@ -40,7 +40,7 @@ public class WordGuesser {
                     break;
                 }
             } else {
-                out.println("Nope, "+guess+" isn't a letter!");
+                out.println("Nope, "+guess+" isn't a letter!\n");
                 wguessedletters.add(guess);
             }
         }
