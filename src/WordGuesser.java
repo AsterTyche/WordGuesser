@@ -20,18 +20,21 @@ public class WordGuesser {
             String wrong = "";
             for (String w : wguessedletters) wrong = String.format("%s%s, ", wrong, w);
             if (wrong.length()>0) wrong = wrong.substring(0, wrong.length()-2);
-            out.println(ask+"\nYou have guessed "+wguessedletters.size()+" wrong letter(s):\n"+wrong+"\nYou have "+x+" more chances.\nGuess a letter:");
+            out.println(ask+"\nYou have guessed "+wguessedletters.size()+" wrong letter(s):\n"+wrong+"\nYou have "+x+" more chance(s).\nGuess a letter:");
             String guess = ascanner.next();
             if (guess.length()!=1){
-                out.println(guess+" isn't a letter.");
+                out.println(guess+" isn't a letter.\n");
+                x++;
                 continue;
             }
             tries++;
             if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) {
-                out.println("You already guessed "+guess+"!");
+                out.println("You already guessed "+guess+"!\n");
+                x++;
             } else if (Arrays.asList(letters).contains(guess)) {
                 rguessedletters.add(guess);
-                out.println(guess+" was a letter!");
+                out.println(guess+" was a letter!\n");
+                x++;
                 if (letters.length == rguessedletters.size()) {
                     guessed = true;
                     break;
