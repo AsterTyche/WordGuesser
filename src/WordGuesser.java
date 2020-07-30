@@ -1,21 +1,22 @@
 import java.io.File;
 import java.util.*;
-
 import static java.lang.String.format;
 import static java.lang.System.*;
+import static java.util.Arrays.*;
+import static java.util.Objects.*;
 
 public class WordGuesser {
     public static void main(String [] args) throws Exception{
         String word = getword();
         boolean guessed = false;
-        String[] letters = removeDuplicates(Objects.requireNonNull(word).split(""));
+        String[] letters = removeDuplicates(requireNonNull(word).split(""));
         ArrayList<String> rguessedletters = new ArrayList<>();
         ArrayList<String> wguessedletters = new ArrayList<>();
         Scanner ascanner = new Scanner(in);
         int tries = 0;
         while (wguessedletters.size()<6) {
             String ask = "You are now guessing:";
-            for (String letter : Objects.requireNonNull(word).split(""))
+            for (String letter : requireNonNull(word).split(""))
                 if (!(rguessedletters.contains(letter))) ask = format("%s_", ask);
                 else ask = format("%s%s", ask, letter);
             String wrong = "";
@@ -29,7 +30,7 @@ public class WordGuesser {
             }
             tries++;
             if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) out.println("You already guessed " + guess + "!\n");
-            else if (Arrays.asList(letters).contains(guess)) {
+            else if (asList(letters).contains(guess)) {
                 rguessedletters.add(guess);
                 out.println(guess+" was a letter!\n");
                 if (rguessedletters.size() == letters.length) {
