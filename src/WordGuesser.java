@@ -4,14 +4,7 @@ import static java.lang.System.*;
 
 public class WordGuesser {
     public static void main(String [] args) throws Exception{
-        File file = new File("words.txt");
-        Scanner fscanner = new Scanner(file);
-        int word_index = (int) (Math.random()*1000);
-        String word = null;
-        while (word_index>0){
-            word = fscanner.next();
-            word_index--;
-        }
+        String word = getword();
         boolean guessed = false;
         out.println(Objects.requireNonNull(word).split("").length);
         String[] letters = removeDuplicates(Objects.requireNonNull(word).split(""));
@@ -44,6 +37,17 @@ public class WordGuesser {
         }
         out.println("You did it!");
         out.println("The word was "+word+".");
+    }
+    public static String getword() throws Exception{
+        File file = new File("words.txt");
+        Scanner fscanner = new Scanner(file);
+        int word_index = (int) (Math.random()*1000);
+        String word = null;
+        while (word_index>0){
+            word = fscanner.next();
+            word_index--;
+        }
+        return word;
     }
     public static String[] removeDuplicates(String[] arr){
         int end = arr.length;
