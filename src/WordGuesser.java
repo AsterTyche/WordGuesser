@@ -39,6 +39,7 @@ public class WordGuesser {
             }
         }
         out.println("You did it!");
+        out.println("The word was "+word+".");
     }
     public static String[] removeDuplicates(String[] arr){
         int end = arr.length;
