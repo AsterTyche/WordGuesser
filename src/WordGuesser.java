@@ -37,7 +37,7 @@ public class WordGuesser {
                     break;
                 }
             } else {
-                out.println("Nope, "+guess+" isn't a letter!\n");
+                out.println("Nope, "+guess+" isn't in the word!\n");
                 wguessedletters.add(guess);
             }
         }
