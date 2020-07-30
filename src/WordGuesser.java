@@ -7,8 +7,8 @@ public class WordGuesser {
         String word = getword();
         boolean guessed = false;
         String[] letters = removeDuplicates(Objects.requireNonNull(word).split(""));
-        List<String> rguessedletters = new ArrayList<>();
-        List<String> wguessedletters = new ArrayList<>();
+        ArrayList<String> rguessedletters = new ArrayList<>();
+        ArrayList<String> wguessedletters = new ArrayList<>();
         Scanner ascanner = new Scanner(in);
         int tries = 0;
         while (!guessed) {
@@ -17,7 +17,10 @@ public class WordGuesser {
                 if (!(rguessedletters.contains(letter))) ask = String.format("%s_", ask);
                 else ask = String.format("%s%s", ask, letter);
             }
-            out.println(ask+"\nYou have guessed "+wguessedletters.size()+" wrong letter(s).\nGuess a letter:");
+            String wrong = "";
+            for (String w : wguessedletters) wrong = String.format("%s%s, ", wrong, w);
+            if (wrong.length()>0) wrong = wrong.substring(0, wrong.length()-2);
+            out.println(ask+"\nYou have guessed "+wguessedletters.size()+" wrong letter(s):\n"+wrong+"\nGuess a letter:");
             String guess = ascanner.next();
             tries++;
             if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) {
