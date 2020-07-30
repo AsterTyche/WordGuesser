@@ -50,11 +50,11 @@ public class WordGuesser {
     }
     private static String getword() throws Exception{
         File file = new File("words.txt");
-        Scanner fscanner = new Scanner(file);
+        Scanner scanner = new Scanner(file);
         int word_index = (int) (random()*1000);
         String word = null;
         while (word_index>0){
-            word = fscanner.next();
+            word = scanner.next();
             word_index--;
         }
         return word;
