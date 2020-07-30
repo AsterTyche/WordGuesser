@@ -11,7 +11,7 @@ public class WordGuesser {
         ArrayList<String> wguessedletters = new ArrayList<>();
         Scanner ascanner = new Scanner(in);
         int tries = 0;
-        for (int x = 6; x > 0; x--) {
+        while (wguessedletters.size()<6) {
             String ask = "You are now guessing:";
             for (String letter : Objects.requireNonNull(word).split("")) {
                 if (!(rguessedletters.contains(letter))) ask = String.format("%s_", ask);
@@ -20,21 +20,18 @@ public class WordGuesser {
             String wrong = "";
             for (String w : wguessedletters) wrong = String.format("%s%s, ", wrong, w);
             if (wrong.length()>0) wrong = wrong.substring(0, wrong.length()-2);
-            out.println(ask+"\nYou have guessed "+wguessedletters.size()+" wrong letter(s):\n"+wrong+"\nYou have "+x+" more chance(s).\nGuess a letter:");
+            out.printf("%s\nYou have guessed %d wrong letter(s):\n%s\nYou have %s more chance(s).\nGuess a letter:%n", ask, wguessedletters.size(), wrong, 6 - wguessedletters.size());
             String guess = ascanner.next();
             if (guess.length()!=1){
                 out.println(guess+" isn't a letter.\n");
-                x++;
                 continue;
             }
             tries++;
             if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) {
                 out.println("You already guessed "+guess+"!\n");
-                x++;
             } else if (Arrays.asList(letters).contains(guess)) {
                 rguessedletters.add(guess);
                 out.println(guess+" was a letter!\n");
-                x++;
                 if (letters.length == rguessedletters.size()) {
                     guessed = true;
                     break;
@@ -44,8 +41,8 @@ public class WordGuesser {
                 wguessedletters.add(guess);
             }
         }
-        if (guessed) out.println("\nYou did it in " + tries + " tries!\nThe word was " + word + ".");
-        else out.println("\nBetter luck next time!\nThe word was " + word + ".");
+        if (guessed) out.println("You did it in " + tries + " tries!\nThe word was " + word + ".");
+        else out.println("Better luck next time!\nThe word was " + word + ".");
     }
     public static String getword() throws Exception{
         File file = new File("words.txt");
