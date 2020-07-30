@@ -13,13 +13,15 @@ public class WordGuesser {
             word_index--;
         }
         boolean guessed = false;
+        out.println(Objects.requireNonNull(word).split("").length);
         String[] letters = removeDuplicates(Objects.requireNonNull(word).split(""));
+        out.println(letters.length);
         List<String> rguessedletters = new ArrayList<>();
         List<String> wguessedletters = new ArrayList<>();
         Scanner ascanner = new Scanner(in);
         while (!guessed) {
             String ask = "You are now guessing:";
-            for (String letter : letters) {
+            for (String letter : Objects.requireNonNull(word).split("")) {
                 if (!(rguessedletters.contains(letter))) ask += "_";
                 else ask = String.format("%s%s", ask, letter);
             }
@@ -27,12 +29,14 @@ public class WordGuesser {
             out.println("You have guessed "+wguessedletters.size()+" wrong letter(s).");
             out.println("Guess a letter:");
             String guess = ascanner.next();
-            if (Arrays.asList(letters).contains(guess)) {
+            if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) {
+                out.println("You already guessed "+guess+"!");
+            } else if (Arrays.asList(letters).contains(guess)) {
                 rguessedletters.add(guess);
-                out.println("That was a letter!");
-                if (letters.length == rguessedletters.size()) guessed = true;
-            } else if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) {
-                out.println("You already guessed that!");
+                out.println(guess+" was a letter!");
+                if (letters.length == rguessedletters.size()) {
+                    guessed = true;
+                }
             } else {
                 out.println("Sorry, you got it wrong.");
                 wguessedletters.add(guess);
