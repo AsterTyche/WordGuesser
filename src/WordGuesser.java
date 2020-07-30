@@ -47,7 +47,7 @@ public class WordGuesser {
         if (guessed) out.println("You did it in " + tries + " tries!\nThe word was " + word + ".");
         else out.println("Better luck next time!\nThe word was " + word + ".");
     }
-    public static String getword() throws Exception{
+    private static String getword() throws Exception{
         File file = new File("words.txt");
         Scanner fscanner = new Scanner(file);
         int word_index = (int) (random()*1000);
@@ -58,7 +58,7 @@ public class WordGuesser {
         }
         return word;
     }
-    public static String[] removeDuplicates(String[] arr){
+    private static String[] removeDuplicates(String[] arr){
         int end = arr.length;
         for (int i = 0; i < end; i++) {
             for (int j = i + 1; j < end; j++) {
