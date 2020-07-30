@@ -22,6 +22,10 @@ public class WordGuesser {
             if (wrong.length()>0) wrong = wrong.substring(0, wrong.length()-2);
             out.println(ask+"\nYou have guessed "+wguessedletters.size()+" wrong letter(s):\n"+wrong+"\nGuess a letter:");
             String guess = ascanner.next();
+            if (guess.length()!=1){
+                out.println(guess+" isn't a letter.");
+                continue;
+            }
             tries++;
             if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) {
                 out.println("You already guessed "+guess+"!");
