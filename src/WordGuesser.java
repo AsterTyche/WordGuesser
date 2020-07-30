@@ -3,7 +3,7 @@ import java.util.*;
 import static java.lang.System.*;
 
 public class WordGuesser {
-    public static void main(String [] args_) throws Exception{
+    public static void main(String [] args) throws Exception{
         File file = new File("words.txt");
         Scanner fscanner = new Scanner(file);
         int word_index = (int) (Math.random()*1000);
