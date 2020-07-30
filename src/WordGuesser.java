@@ -1,5 +1,7 @@
 import java.io.File;
 import java.util.*;
+
+import static java.lang.String.format;
 import static java.lang.System.*;
 
 public class WordGuesser {
@@ -13,12 +15,11 @@ public class WordGuesser {
         int tries = 0;
         while (wguessedletters.size()<6) {
             String ask = "You are now guessing:";
-            for (String letter : Objects.requireNonNull(word).split("")) {
-                if (!(rguessedletters.contains(letter))) ask = String.format("%s_", ask);
-                else ask = String.format("%s%s", ask, letter);
-            }
+            for (String letter : Objects.requireNonNull(word).split(""))
+                if (!(rguessedletters.contains(letter))) ask = format("%s_", ask);
+                else ask = format("%s%s", ask, letter);
             String wrong = "";
-            for (String w : wguessedletters) wrong = String.format("%s%s, ", wrong, w);
+            for (String w : wguessedletters) wrong = format("%s%s, ", wrong, w);
             if (wrong.length()>0) wrong = wrong.substring(0, wrong.length()-2);
             out.printf("%s\nYou have guessed %d wrong letter(s):\n%s\nYou have %s more chance(s).\nGuess a letter:%n", ask, wguessedletters.size(), wrong, 6 - wguessedletters.size());
             String guess = ascanner.next();
@@ -27,12 +28,11 @@ public class WordGuesser {
                 continue;
             }
             tries++;
-            if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) {
-                out.println("You already guessed "+guess+"!\n");
-            } else if (Arrays.asList(letters).contains(guess)) {
+            if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) out.println("You already guessed " + guess + "!\n");
+            else if (Arrays.asList(letters).contains(guess)) {
                 rguessedletters.add(guess);
                 out.println(guess+" was a letter!\n");
-                if (letters.length == rguessedletters.size()) {
+                if (rguessedletters.size() == letters.length) {
                     guessed = true;
                     break;
                 }
