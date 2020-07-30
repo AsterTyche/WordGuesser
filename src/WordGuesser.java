@@ -11,7 +11,7 @@ public class WordGuesser {
         ArrayList<String> wguessedletters = new ArrayList<>();
         Scanner ascanner = new Scanner(in);
         int tries = 0;
-        while (!guessed) {
+        for (int x = 0; x < 6; x++) {
             String ask = "You are now guessing:";
             for (String letter : Objects.requireNonNull(word).split("")) {
                 if (!(rguessedletters.contains(letter))) ask = String.format("%s_", ask);
@@ -34,13 +34,15 @@ public class WordGuesser {
                 out.println(guess+" was a letter!");
                 if (letters.length == rguessedletters.size()) {
                     guessed = true;
+                    break;
                 }
             } else {
                 out.println("Nope, "+guess+" isn't a letter!");
                 wguessedletters.add(guess);
             }
         }
-        out.println("\nYou did it in "+tries+" tries!\nThe word was "+word+".");
+        if (guessed) out.println("\nYou did it in " + tries + " tries!\nThe word was " + word + ".");
+        else out.println("\nBetter luck next time!\nThe word was " + word + ".");
     }
     public static String getword() throws Exception{
         File file = new File("words.txt");
