@@ -6,21 +6,17 @@ public class WordGuesser {
     public static void main(String [] args) throws Exception{
         String word = getword();
         boolean guessed = false;
-        out.println(Objects.requireNonNull(word).split("").length);
         String[] letters = removeDuplicates(Objects.requireNonNull(word).split(""));
-        out.println(letters.length);
         List<String> rguessedletters = new ArrayList<>();
         List<String> wguessedletters = new ArrayList<>();
         Scanner ascanner = new Scanner(in);
         while (!guessed) {
             String ask = "You are now guessing:";
             for (String letter : Objects.requireNonNull(word).split("")) {
-                if (!(rguessedletters.contains(letter))) ask += "_";
+                if (!(rguessedletters.contains(letter))) ask = String.format("%s_", ask);
                 else ask = String.format("%s%s", ask, letter);
             }
-            out.println(ask);
-            out.println("You have guessed "+wguessedletters.size()+" wrong letter(s).");
-            out.println("Guess a letter:");
+            out.println(ask+"\nYou have guessed "+wguessedletters.size()+" wrong letter(s).\nGuess a letter:");
             String guess = ascanner.next();
             if (wguessedletters.contains(guess) || rguessedletters.contains(guess)) {
                 out.println("You already guessed "+guess+"!");
