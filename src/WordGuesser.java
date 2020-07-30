@@ -1,5 +1,7 @@
 import java.io.File;
 import java.util.*;
+
+import static java.lang.Math.*;
 import static java.lang.String.format;
 import static java.lang.System.*;
 import static java.util.Arrays.*;
@@ -48,7 +50,7 @@ public class WordGuesser {
     public static String getword() throws Exception{
         File file = new File("words.txt");
         Scanner fscanner = new Scanner(file);
-        int word_index = (int) (Math.random()*1000);
+        int word_index = (int) (random()*1000);
         String word = null;
         while (word_index>0){
             word = fscanner.next();
@@ -68,7 +70,7 @@ public class WordGuesser {
             }
         }
         String[] whitelist = new String[end];
-        System.arraycopy(arr, 0, whitelist, 0, end);
+        arraycopy(arr, 0, whitelist, 0, end);
         return whitelist;
     }
 }
