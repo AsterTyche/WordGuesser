@@ -14,7 +14,7 @@ public class WordGuesser {
         String[] letters = removeDuplicates(requireNonNull(word).split(""));
         ArrayList<String> rguessedletters = new ArrayList<>();
         ArrayList<String> wguessedletters = new ArrayList<>();
-        Scanner ascanner = new Scanner(in);
+        Scanner scanner = new Scanner(in);
         int tries = 0;
         while (wguessedletters.size()<10) {
             String ask = "You are now guessing:";
@@ -26,7 +26,7 @@ public class WordGuesser {
             for (String r : rguessedletters) guessedletters = format("%s%s, ", guessedletters, r);
             if (guessedletters.length()>0) guessedletters = guessedletters.substring(0, guessedletters.length()-2);
             out.printf("%s\nYou have guessed these letter(s):\n%s\nYou have %s more chance(s).\nGuess a letter:%n", ask, guessedletters, 10 - wguessedletters.size());
-            String guess = ascanner.next();
+            String guess = scanner.next();
             if (guess.length()!=1){
                 out.println(guess+" isn't a letter.\n");
                 continue;
