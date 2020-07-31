@@ -27,7 +27,7 @@ public class WordGuesser {
             if (guessedletters.length()>0) guessedletters = guessedletters.substring(0, guessedletters.length()-2);
             out.printf("%s\nYou have guessed these letter(s):\n%s\nYou have %s more chance(s).\nGuess a letter:%n", ask, guessedletters, 10 - wguessedletters.size());
             String guess = scanner.next();
-            if (guess.length()!=1 || !("abcdefgijklmnopqrstuvwxyz").contains(guess)){
+            if (guess.length()!=1 || !("abcdefghijklmnopqrstuvwxyz").contains(guess)){
                 out.println(guess+" isn't a letter.\n");
                 continue;
             }
