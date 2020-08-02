@@ -16,7 +16,7 @@ public class WordGuesser {
         ArrayList<String> wguessedletters = new ArrayList<>();
         Scanner scanner = new Scanner(in);
         int tries = 0;
-        while (wguessedletters.size()<10) {
+        while (wguessedletters.size() < 10) {
             String ask = "You are now guessing:";
             for (String letter : requireNonNull(word).split(""))
                 if (!(rguessedletters.contains(letter))) ask = format("%s_", ask);
@@ -29,7 +29,7 @@ public class WordGuesser {
             String guess = scanner.next();
             if (guess.equals(word)){
                 guessed = true;
-                continue;
+                break;
             }
             if (guess.length()!=1 || !("abcdefghijklmnopqrstuvwxyz").contains(guess)){
                 out.println(guess+" isn't a letter.\n");
