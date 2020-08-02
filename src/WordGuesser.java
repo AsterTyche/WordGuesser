@@ -24,7 +24,7 @@ public class WordGuesser {
             for (String w : wguessedletters) guessedletters = format("%s%s, ", guessedletters, w);
             for (String r : rguessedletters) guessedletters = format("%s%s, ", guessedletters, r);
             if (guessedletters.length()>0) guessedletters = guessedletters.substring(0, guessedletters.length()-2);
-            out.printf("%s\nYou have guessed these letter(s):\n%s\nYou have %s more chance(s).\nGuess a letter or the word:", ask, guessedletters, 10 - wguessedletters.size());
+            out.printf("%s\nYou have guessed these letter(s):\n%s\nYou have %s more chance(s).\nGuess a letter or the word: ", ask, guessedletters, 10 - wguessedletters.size());
             String guess = scanner.next();
             if (guess.equals(word)){
                 guessed = true;
