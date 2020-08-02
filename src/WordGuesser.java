@@ -1,6 +1,5 @@
 import java.io.File;
 import java.util.*;
-
 import static java.lang.Math.*;
 import static java.lang.String.format;
 import static java.lang.System.*;
