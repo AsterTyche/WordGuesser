@@ -18,4 +18,4 @@ me whoo whee
 
 insta: @aster.tyche
 
-github: you're already here but @RykerDemigod
+github: you're already here but @AsterTyche
