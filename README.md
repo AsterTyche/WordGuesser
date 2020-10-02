@@ -12,7 +12,11 @@ basically I did stuff with file input and string input
 
 and random to choose it and then some arraylist stuff
 
-## author
+## Outside Things used:
+
+https://github.com/dwyl/english-words/blob/master/words_alpha.txt
+
+## Author
 
 me whoo whee
 
